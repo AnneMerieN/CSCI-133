@@ -1,19 +1,36 @@
 #include <iostream>
 
+using namespace std;
 
-int fib (int n) {
-    if (n == 0) { // Base Case: Fib of 0 is 0
-        return 0;
-    } else if (n == 1) { // Base Case: Fib of 1 is 1
-        return 1;
-    } else { // Each subsequent number is the sum of the two preceding numbers 
-        return fib(n - 1) + fib(n-2); // Recursive case
+int fibRecursive(int n) {
+    
+    int storedValue; 
+
+    if (n == 0) {
+        storedValue = 0; 
+    } else if (n == 1) {
+        storedValue = 1;
+    } else {
+        storedValue = fibRecursive(n - 1) + fibRecursive(n - 2); 
     }
+
+    return storedValue; 
 }
 
-
 int main() {
+    const int size = 8;
+    int arr[size];
 
+    // Storing Fibonacci sequence in the array
+    for (int i = 0; i < size; ++i) {
+        int storedValue = fibRecursive(i);
+        arr[i] = storedValue; 
+    }
+
+    // Print
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
 
     return 0;
 }
