@@ -28,24 +28,23 @@ class LinkedList {
     public:
         LinkedList() { head = nullptr; tail = nullptr, size = 0; }
         ~LinkedList();
-        int getSize() { return size; }
+        int getSize() const { return size; }
         void append(int data);
         void prepend(int data);
-        bool isEmpty();
-        void toString(); // prints out linkedlist
+        bool isEmpty() const;
+        void toString() const; // prints out linkedlist
         void removeFirst();
         void removeLast();
         void removeAt(int pos);
         void insertAt(int pos, int data);
 };
 
-bool LinkedList::isEmpty() {
+bool LinkedList::isEmpty() const {
     return (head == nullptr);
 }
 
 void LinkedList::append(int data) {
 
-    // Create new Node dynamically
     Node* nodeToAppend = new Node(data);
 
     // Case 1 : Empty List
@@ -78,7 +77,7 @@ void LinkedList::prepend(int data) {
     size++; // Increment the size
 
 }
-void LinkedList::toString() {
+void LinkedList::toString() const{
     // Create a temp pointer that points to first Node
     Node* temp = head;
     // Create loop that stops when pointer is null
