@@ -26,7 +26,11 @@ class LinkedList {
         Node* tail;
         int size;
     public:
-        LinkedList() { head = nullptr; tail = nullptr, size = 0; }
+        LinkedList() {
+            head = nullptr;
+            tail = nullptr;
+            size = 0;
+        }
         ~LinkedList();
         int getSize() const { return size; }
         void append(int data);

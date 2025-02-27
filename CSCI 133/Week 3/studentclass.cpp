@@ -56,8 +56,5 @@ double Student::getGPA() const {
     return gpa;
 }
 
-int main() {
 
-    Cohort cs133(25, "Data Structures", "Paaras");
-}
 
