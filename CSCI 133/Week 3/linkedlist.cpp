@@ -4,46 +4,45 @@ using namespace std;
 
 
 // Part I: Singly Linked List
-
 class SinglyLinkedList {
 
-private: // ensures only LinkedList class can manage node creation and modification
-    class Node {
+    private: // ensures only LinkedList class can manage node creation and modification
+        class Node {
+            public:
+                int data;
+                Node* next;
+                Node(int data) {
+                    this->data = data;
+                    next = nullptr;
+                }
+        };
+
+        Node* head;
+
     public:
-        int data;
-        Node* next;
-        Node(int data) {
-            this->data = data;
-            next = nullptr;
+        SinglyLinkedList() {
+            head = nullptr;
         }
-    };
 
-    Node* head;
-
-public:
-    SinglyLinkedList() {
-        head = nullptr;
-    }
-
-    ~SinglyLinkedList() {
-        Node* current = head;
-        while (current != nullptr) {
-            Node* next = current->next;
-            delete current;
-            current = next;
+        ~SinglyLinkedList() {
+            Node* current = head;
+            while (current != nullptr) {
+                Node* next = current->next;
+                delete current;
+                current = next;
+            }
         }
-    }
 
     // Add an element at the end
     void add(int data) {
 
         Node* newNode = new Node(data); // Create node to add
 
-        if (head = nullptr) { // Empty check
+        if (head == nullptr) { // Empty check
             head = newNode;
         } else {
             Node* temp = head; // Create temp node and traverse to end of linked list
-            while (temp != nullptr) {
+            while ((temp -> next) != nullptr) {
                 temp = temp->next;
             }
             temp->next = newNode;
@@ -252,33 +251,33 @@ int main() {
     singlyList.add(10);
     singlyList.add(20);
     singlyList.add(30);
-    singlyList.display();  // Output: 10 20 30
+    // singlyList.display();  // Output: 10 20 30
 
-    singlyList.deleteNode(20);
-    singlyList.display();  // Output: 10 30
+    // singlyList.deleteNode(20);
+    // singlyList.display();  // Output: 10 30
 
-    // ====== Part II: Doubly Linked List ======
-    cout << "\nDoubly Linked List:" << endl;
-    DoublyLinkedList doublyList;
-    doublyList.addFirst(10);
-    doublyList.addLast(20);
-    doublyList.addLast(30);
+    // // ====== Part II: Doubly Linked List ======
+    // cout << "\nDoubly Linked List:" << endl;
+    // DoublyLinkedList doublyList;
+    // doublyList.addFirst(10);
+    // doublyList.addLast(20);
+    // doublyList.addLast(30);
 
-    cout << "Forward: ";
-    doublyList.displayForward();  // Output: 10 20 30
+    // cout << "Forward: ";
+    // doublyList.displayForward();  // Output: 10 20 30
 
-    cout << "Backward: ";
-    doublyList.displayBackward(); // Output: 30 20 10
+    // cout << "Backward: ";
+    // doublyList.displayBackward(); // Output: 30 20 10
 
-    doublyList.deleteNode(20);
-    cout << "After deleting 20:" << endl;
-    cout << "Forward: ";
-    doublyList.displayForward();  // Output: 10 30
-    cout << "Backward: ";
-    doublyList.displayBackward(); // Output: 30 10
+    // doublyList.deleteNode(20);
+    // cout << "After deleting 20:" << endl;
+    // cout << "Forward: ";
+    // doublyList.displayForward();  // Output: 10 30
+    // cout << "Backward: ";
+    // doublyList.displayBackward(); // Output: 30 10
 
-    // ====== Part III: Reverse Singly Linked List ======
-    cout << "\nReversing Singly Linked List:" << endl;
+    // // ====== Part III: Reverse Singly Linked List ======
+    // cout << "\nReversing Singly Linked List:" << endl;
     singlyList.reverse();
     singlyList.display();  // Output: 30 10
 

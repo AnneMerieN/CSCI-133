@@ -19,21 +19,33 @@ class Stack {
         Node* top; // Pointer to the top node
     public:
         Stack() { top = nullptr; } // Initialize stack as empty
-        ~Stack() {
-            while (!isEmpty()) {
-                pop();
-            }
-        }
+
         void push(int data) {
+            // Check if empty first
             Node* nodeToInsert = new Node(data);
 
-            nodeToInsert->next = top;
-            top = nodeToInsert;
+            nodeToInsert->next = top; // Link new node to point to current top
+            top = nodeToInsert; // reassign new top
         }
+
         bool isEmpty() {
             return top == nullptr;
         }
-        void pop();
+
+        int popvalue() {
+            
+            if (isEmpty()) {
+                return -1;
+            }
+        
+            int poppedValue = top->data; // Store the data to return
+
+            Node* temp = top;            // Save the current top node
+            top = top->next;             // Move top to the next node
+            delete temp;                 // Delete the old top node
+        
+            return poppedValue;           // Return the popped value
+        }
         
 
 };

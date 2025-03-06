@@ -13,7 +13,6 @@ int fibRecursive(int n) {
     } else {
         storedValue = fibRecursive(n - 1) + fibRecursive(n - 2); 
     }
-
     return storedValue; 
 }
 

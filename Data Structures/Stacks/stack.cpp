@@ -44,7 +44,8 @@ void StackArray::push(int data) {
         cout << "Stack Overflow: Cannot push " << data << endl;
         return;
     }
-    stackArr[++top] = data; // increment top and add the value
+    top++; // increment top
+    stackArr[top] = data; // assign value to top
 }
 
 int StackArray::pop() {
@@ -52,10 +53,10 @@ int StackArray::pop() {
         cout << "Cannot pop. Stack is empty." << endl;
         return -1;
     }
-    return stackArr[top--]; // Return the top element and decrement
-    // Notes:
-    // 1. arr[top]: returns the value at the top of the stack
-    // 2. top--: post-decrment operator (--) decreases top after accessing arr[top]
+    // Return the top element and decrement
+ 
+    return stackArr[top];
+    top--;
 
 }
 int StackArray::peek() {
