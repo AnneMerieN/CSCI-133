@@ -38,6 +38,7 @@ void Queue::add(int data) {
     
     if (isEmpty()) {
         head = nodeToAdd;
+        tail = nodeToAdd;
     } else {
         tail->next = nodeToAdd;
     }
@@ -68,11 +69,13 @@ void Queue::print() const {
 int main() {
 
     Queue myQueue;
+    Queue myQueue;
 
     myQueue.add(1);
     myQueue.add(2);
     myQueue.add(3);
     myQueue.add(4);
+    myQueue.remove();
     myQueue.remove();
 
     myQueue.print();
