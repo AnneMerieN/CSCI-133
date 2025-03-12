@@ -1,10 +1,12 @@
+/* Linked-list Based Queue */
+
 #include <iostream>
 
 using namespace std;
 
 class Queue {
 
-    private: // ensures only LinkedList class can manage node creation and modification
+    private:
         class Node {
             public:
                 int data;
@@ -14,20 +16,27 @@ class Queue {
                     next = nullptr;
                 }
         };
-    
+
         Node* head;
         Node* tail;
-    
+
     public:
         Queue() {
             head = nullptr;
             tail = nullptr;
         }
+
+        ~Queue() {
+            while (!isEmpty()) {
+                remove();
+            }
+        }
+
         void add(int data);
         void remove();
         void print() const;
         bool isEmpty() const;
-    };
+};
 
 bool Queue::isEmpty() const {
     return head == nullptr;
@@ -35,29 +44,39 @@ bool Queue::isEmpty() const {
 
 void Queue::add(int data) {
     Node* nodeToAdd = new Node(data);
-    
+
     if (isEmpty()) {
         head = nodeToAdd;
         tail = nodeToAdd;
     } else {
         tail->next = nodeToAdd;
+        tail = nodeToAdd;
     }
-
 }
 
 void Queue::remove() {
-
-    if (isEmpty()) {
+    if (isEmpty()) { // Case 1: Queue is already empty
+        cout << "Queue is empty, cannot remove." << endl;
         return;
-    } else {
+    }
+    else if (head->next == nullptr) { // Case 2: Queue has only one element
+        delete head;
+        head = nullptr;
+        tail = nullptr;
+    }
+    else { // Case 3: Queue has multiple elements
         Node* temp = head;
         head = head->next;
         delete temp;
     }
-
 }
 
 void Queue::print() const {
+    if (isEmpty()) {
+        cout << "Queue is empty." << endl;
+        return;
+    }
+
     Node* temp = head;
     while (temp != nullptr) {
         cout << temp->data << " ";
@@ -67,8 +86,6 @@ void Queue::print() const {
 }
 
 int main() {
-
-    Queue myQueue;
     Queue myQueue;
 
     myQueue.add(1);
@@ -80,4 +97,5 @@ int main() {
 
     myQueue.print();
 
+    return 0;
 }
